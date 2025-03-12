@@ -61,15 +61,10 @@ function TodoItem({ todo, editTodo, editTitle, setEditTodo, setEditTitle, handle
 }
 
 const fetcher = async (url, options = {}) => {
-    const token = localStorage.getItem("token"); // Get token from localStorage
-
     try {
         const response = await fetch(url, {
             method: options.method || "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}` // Include token in headers
-            },
+            headers: { "Content-Type": "application/json" },
             credentials: "include",
             mode: "cors",
             body: options.body ? JSON.stringify(options.body) : undefined,
@@ -86,7 +81,6 @@ const fetcher = async (url, options = {}) => {
         return { error: "Network error" };
     }
 };
-
 
 function Todo() {
     const token = localStorage.getItem("token");
@@ -116,37 +110,32 @@ function Todo() {
         e.preventDefault();
         const formData = new FormData(e.target);
         const title = formData.get("title").trim();
-    
+
         if (!title) {
             toast.error("Todo can't be empty");
             return;
         }
-    
+
         if (data.some(todo => todo.title.toLowerCase() === title.toLowerCase())) {
             toast.error("Todo already exists");
             return;
         }
-    
+
         const newTodo = { title, _id: Date.now().toString(), isCompleted: false };
-    
+
         try {
             await mutate(async () => {
-                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/todos`, {
+                const response = await fetcher(`${import.meta.env.VITE_BACKEND_URL}/api/todos`, {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${localStorage.getItem("token")}` // Ensure token is sent
-                    },
-                    body: JSON.stringify({ title }),
+                    body: { title },
                 });
-    
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} ${response.statusText}`);
+
+                if (response.error) {
+                    throw new Error(response.error);
                 }
-    
-                const result = await response.json();
+
                 toast.success("Todo Added");
-                return [...data, result];
+                return [...data, response];
             }, {
                 optimisticData: [...data, newTodo],
                 rollbackOnError: true,
@@ -154,12 +143,11 @@ function Todo() {
             });
         } catch (error) {
             toast.error("Failed to add todo");
-            console.error(error);
         }
-    
+
         e.target.reset();
     }
-    
+
     async function deleteTodo(id) {
         console.log("Deleting todo with ID:", id);
 
