@@ -171,18 +171,20 @@ function Todo() {
 
     async function handleComplete(id, isCompleted) {
         console.log("Marking as completed:", id);
-
+    
         await mutate(async () => {
             const response = await fetcher(`${import.meta.env.VITE_BACKEND_URL}/api/todos/${id}`, {
                 method: "PUT",
                 body: { isCompleted: !isCompleted },
             });
-
+    
             if (response.error) {
                 throw new Error(response.error);
             }
-
-            toast.success(response.message || "Todo Updated");
+    
+            const updatedTodo = data.find((todo) => todo._id === id);
+            toast.success(`${updatedTodo.title} marked as ${!isCompleted ? "Completed" : "Incomplete"}`);
+    
             return data.map((todo) =>
                 todo._id === id ? { ...todo, isCompleted: !isCompleted } : todo
             );
@@ -194,7 +196,7 @@ function Todo() {
             revalidate: false,
         });
     }
-
+    
     function startEdit(todo) {
         setEditTodo(todo._id);
         setEditTitle(todo.title);
