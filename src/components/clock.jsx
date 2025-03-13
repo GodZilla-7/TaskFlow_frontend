@@ -59,12 +59,12 @@ const Clock = ({ textColor, setTextColor }) => {
             onMouseLeave={() => setIsHovered(false)}
             style={{ color: textColor }}
         >
-            <div className="text-2xl w-80 font-thin">{getGreeting(time.getHours())}</div>
+            <div className="text-2xl font-stretch-ultra-condensed">{getGreeting(time.getHours())}</div>
 
-            <div onClick={handleClockClick} className="text-5xl font-bold mt-2">
+            <div onClick={handleClockClick} className="text-6xl font-semibold mt-2">
                 It's {formatTime(time)}
             </div>
-            <div className="text-sm mt-4">{formatDate(time)}</div>
+            <div className="text-sm mt-4 font-thin">{formatDate(time)}</div>
 
             {isHovered && (
                 <div className="mt-4 flex items-center gap-2">

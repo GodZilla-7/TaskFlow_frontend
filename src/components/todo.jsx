@@ -242,7 +242,7 @@ function Todo() {
                 <SearchBox />
                 <Clock textColor={textColor} setTextColor={setTextColor} />
 
-                <h1 className="text-3xl font-bold mb-2 bg-white/10 backdrop-blur-lg shadow-lg p-6 rounded-lg border border-white/20" style={{ color: textColor }}>
+                <h1 className="text-3xl font-stretch-ultra-condensed mb-2 bg-white/10 backdrop-blur-lg shadow-lg p-6 rounded-lg border border-white/20" style={{ color: textColor }}>
                     What is your focus for today?
                 </h1>
 
