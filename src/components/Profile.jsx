@@ -16,7 +16,18 @@ const Profile = () => {
         throw new Error("Logout failed. Please try again.");
       }
 
-      toast.success("Logged out successfully!");
+      
+
+      toast('Logged out',
+        {
+          icon: '↪',
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }
+      );
       navigate("/login"); // Redirect to login page after logout
     } catch (error) {
       toast.error(error.message);

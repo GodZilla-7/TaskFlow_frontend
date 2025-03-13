@@ -134,7 +134,16 @@ function Todo() {
                     throw new Error(response.error);
                 }
 
-                toast.success("Todo Added");
+                  toast('Todo Added',
+                {
+                  icon: '📌',
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                }
+              );
                 return [...data, response];
             }, {
                 optimisticData: [...data, newTodo],
@@ -159,8 +168,16 @@ function Todo() {
             if (response.error) {
                 throw new Error(response.error);
             }
-
-            toast.success(response.message || "Todo Deleted");
+   toast('Todo Deleted',
+                {
+                  icon: '🧹',
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                }
+              );
             return data.filter((todo) => todo._id !== id);
         }, {
             optimisticData: data.filter((todo) => todo._id !== id),
@@ -194,7 +211,7 @@ function Todo() {
                 { icon: '👏' 
                     ,
     style: {
-      borderRadius: '10px',
+      borderRadius: '30px',
       background: '#333',
       color: '#fff',
     },
@@ -207,7 +224,7 @@ function Todo() {
                 </span>,
                 { icon: '↩️' ,
                     style: {
-                      borderRadius: '10px',
+                      borderRadius: '30px',
                       background: '#333',
                       color: '#fff',
                     },}
@@ -250,7 +267,17 @@ function Todo() {
                 throw new Error(response.error);
             }
 
-            toast.success("Todo Updated");
+
+            toast('Todo Updated',
+                {
+                  icon: '🖋️',
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                }
+              );
             return data.map((todo) =>
                 todo._id === id ? { ...todo, title: editTitle } : todo
             );
