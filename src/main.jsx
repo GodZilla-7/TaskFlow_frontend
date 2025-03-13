@@ -8,7 +8,7 @@ import Todo from './components/todo.jsx';
 import { BrowserRouter, Routes, Route } from "react-router";
 import {Toaster} from 'react-hot-toast';
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <>
     <Toaster position="top-center"/>
     <BrowserRouter>
     <Routes>
@@ -17,5 +17,6 @@ createRoot(document.getElementById('root')).render(
       <Route path="/register" element={<Register />} />
     </Routes>
   </BrowserRouter>
-  </StrictMode>,
+  </>
+ ,
 )
