@@ -13,15 +13,15 @@ import SearchBox from "./Search";
 import { motion } from "framer-motion";
 function TodoItem({ todo, editTodo, editTitle, setEditTodo, setEditTitle, handleEdit, handleComplete, deleteTodo, startEdit, textColor }) {
     return (
-        <motion.div
-            key={todo._id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            layout // Smooth transition when state changes
-            transition={{ type: "spring", stiffness: 100, damping: 15 }}
-            className={`card shadow-md p-3 flex flex-row justify-between items-center ${todo.isCompleted ? "bg-green-400" : "bg-white/10"} rounded-lg`}
-        >
+<motion.div
+    key={todo._id}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ type: "spring", stiffness: 100, damping: 15 }}
+    className={`card shadow-md p-3 flex flex-row justify-between items-center ${todo.isCompleted ? "bg-green-400" : "bg-white/10"} rounded-lg`}
+>
+
             {editTodo === todo._id ? (
                 <form onSubmit={(e) => handleEdit(e, todo._id)} className="flex w-full">
                     <input
