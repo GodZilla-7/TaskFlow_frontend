@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Profile from "./Profile";
 const Background = () => {
-    const defaultVideo = "https://motionbgs.com/media/2996/jake-the-dog.960x540.mp4";
+    const defaultVideo = "https://static.moewalls.com/videos/preview/2025/night-city-pixel-preview.webm";
     const [videoUrl, setVideoUrl] = useState(sessionStorage.getItem("videoUrl") || defaultVideo);
     const [videoKey, setVideoKey] = useState(0); // Force re-render when URL changes
 

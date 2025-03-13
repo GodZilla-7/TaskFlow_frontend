@@ -37,15 +37,15 @@ const Clock = ({ textColor, setTextColor }) => {
     };
 
     const getGreeting = (hour) => {
-        if (hour < 5) return `It's quite late, ${username}. You should rest!`;
-        if (hour < 8) return `Good Early Morning, ${username}. A fresh start awaits!`;
-        if (hour < 11) return `Good Morning, ${username}. Hope you had a nice breakfast!`;
-        if (hour < 14) return `Good Noon, ${username}. Time to refuel with a good lunch!`;
-        if (hour < 18) return `Good Afternoon, ${username}. Keep going strong! Maybe a light snack?`;
-        if (hour < 21) return `Good Evening, ${username}. A relaxing time of the day!`;
-        return `Good Night, ${username}. Sleep well and recharge for tomorrow!`;
+        if (hour < 5) return `It's late, ${username}. Get some rest!`;
+        if (hour < 8) return `Early morning, ${username}. A fresh start!`;
+        if (hour < 11) return `Good morning, ${username}!`;
+        if (hour < 14) return `Good noon, ${username}. Lunch time!`;
+        if (hour < 18) return `Good afternoon, ${username}. Keep it up!`;
+        if (hour < 21) return `Good evening, ${username}. Time to unwind!`;
+        return `Good night, ${username}. Sleep well!`;
     };
-
+    
     const handleClockClick = () => {
         if (colorInputRef.current) {
             colorInputRef.current.click();
