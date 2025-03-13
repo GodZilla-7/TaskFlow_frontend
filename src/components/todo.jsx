@@ -191,13 +191,26 @@ function Todo() {
                 <span>
                   Completed <b>{updatedTodo.title}</b> Good Job!
                 </span>,
-                { icon: '👏' }
+                { icon: '👏' 
+                    ,
+    style: {
+      borderRadius: '10px',
+      background: '#333',
+      color: '#fff',
+    },
+                }
+                
               )
             : toast(
                 <span>
                   Undone <b>{updatedTodo.title}</b>
                 </span>,
-                { icon: '↩️' }
+                { icon: '↩️' ,
+                    style: {
+                      borderRadius: '10px',
+                      background: '#333',
+                      color: '#fff',
+                    },}
               );
           
 
