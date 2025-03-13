@@ -183,8 +183,25 @@ function Todo() {
             }
     
             const updatedTodo = data.find((todo) => todo._id === id);
-            toast.success(`${updatedTodo.title} marked as ${!isCompleted ? "Completed" : "Incomplete"}`);
+
     
+
+            !isCompleted
+            ? toast(
+                <span>
+                  Completed <b>{updatedTodo.title}</b> Good Job!
+                </span>,
+                { icon: '👏' }
+              )
+            : toast(
+                <span>
+                  Undone <b>{updatedTodo.title}</b>
+                </span>,
+                { icon: '↩️' }
+              );
+          
+
+
             return data.map((todo) =>
                 todo._id === id ? { ...todo, isCompleted: !isCompleted } : todo
             );
