@@ -37,8 +37,8 @@ function Register() {
             throw new Error(data.message || "Registration failed");
         }
 
-        // Save username in localStorage
-        localStorage.setItem("username", formData.username);
+        // Save username in sessionStorage
+        sessionStorage.setItem("username", formData.username);
 
         setSuccess("Registration successful! Redirecting in ");
         let timer = 3;

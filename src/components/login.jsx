@@ -32,9 +32,9 @@ export default function Login() {
   
       setSuccess("Logging you in...");
   
-      // ✅ Save username & token in localStorage
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("username", data.username); // Save username
+      // ✅ Save username & token in sessionStorage
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("username", data.username); // Save username
   
       setTimeout(() => {
         navigate("/");

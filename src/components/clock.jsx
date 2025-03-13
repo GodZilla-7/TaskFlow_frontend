@@ -8,8 +8,8 @@ const Clock = ({ textColor, setTextColor }) => {
     const colorInputRef = useRef(null);
 
     useEffect(() => {
-        // ✅ Retrieve username from localStorage
-        const storedUsername = localStorage.getItem("username");
+        // ✅ Retrieve username from sessionStorage
+        const storedUsername = sessionStorage.getItem("username");
         if (storedUsername) setUsername(storedUsername);
     }, []);
 

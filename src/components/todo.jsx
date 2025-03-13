@@ -83,7 +83,7 @@ const fetcher = async (url, options = {}) => {
 };
 
 function Todo() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const navigate = useNavigate();
 
     useEffect(() => {

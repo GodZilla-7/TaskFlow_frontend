@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import Profile from "./Profile";
 const Background = () => {
     const defaultVideo = "https://motionbgs.com/media/2996/jake-the-dog.960x540.mp4";
-    const [videoUrl, setVideoUrl] = useState(localStorage.getItem("videoUrl") || defaultVideo);
+    const [videoUrl, setVideoUrl] = useState(sessionStorage.getItem("videoUrl") || defaultVideo);
     const [videoKey, setVideoKey] = useState(0); // Force re-render when URL changes
 
     useEffect(() => {
-        localStorage.setItem("videoUrl", videoUrl);
+        sessionStorage.setItem("videoUrl", videoUrl);
     }, [videoUrl]);
 
     const handleWallpaperButtonClick = () => {
